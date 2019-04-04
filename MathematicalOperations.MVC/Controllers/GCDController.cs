@@ -1,9 +1,6 @@
 ﻿using MathematicalOperations.MVC.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System;
 
 namespace MathematicalOperations.MVC.Controllers
 {
@@ -11,18 +8,37 @@ namespace MathematicalOperations.MVC.Controllers
     {
         public ActionResult Algorithm(int[] numbers, string algorithmType)
         {
-            var gcdAlgorithm = new GcdAlgorithm();
-            gcdAlgorithm.Name = algorithmType;
-            if (algorithmType == "euclidiean")
+            var gcdAlgorithm = new GcdAlgorithm
             {
-                gcdAlgorithm.Gcd = GCDAlgorithms.GetEuclidieanGcd(numbers);
+                Name = algorithmType
+            };
+            try
+            {
+                gcdAlgorithm.Gcd = GetGcd(numbers, algorithmType);
             }
-            else
+            catch(ArgumentException)
             {
-                gcdAlgorithm.Gcd = GCDAlgorithms.GetSteinGcd(numbers);
+                return RedirectToAction("CalculationError");
             }
             gcdAlgorithm.InputNumbers = numbers;         
             return View(gcdAlgorithm);
+        }
+
+        private int GetGcd(int[] numbers, string algorithmType)
+        {
+            if (algorithmType == "euclidiean")
+            {
+                return GCDAlgorithms.GetEuclidieanGcd(numbers);
+            }
+            else
+            {
+                return GCDAlgorithms.GetSteinGcd(numbers);
+            }
+        }
+
+        public ActionResult CalculationError()
+        {
+            return View();
         }
 
         public ActionResult Index()

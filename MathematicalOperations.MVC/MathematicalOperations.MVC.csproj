@@ -171,6 +171,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\GCD\Algorithm.cshtml" />
     <Content Include="Views\GCD\Index.cshtml" />
+    <Content Include="Views\GCD\CalculationError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
