@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Gcd methods</h2>
+<div class="container">
+    <form action="/GCD/Algorithm" method="post">
+        <div class="alert alert-danger hidden" role="alert" id="error-message"></div>
+        <div class="form-group row">
+            <label for="algorithmType" class="col-sm-2 col-form-label">Choose type of algorithm.</label>
+            <select name="algorithmType" class="form-control">
+                <option value="stein">Stein gcd</option>
+                <option value="euclidiean">Euclidiean gcd</option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label for="generated-inputs-count">How much numbers</label>
+            </div>
+            <div class="col-sm-2">
+                <input placeholder="How much numbers" class="form-control" id="generated-inputs-count" name="generated-inputs-count" value="1" />
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-default" id="generate-inputs" name="generate-inputs">Type numbers</button>
+            </div>
+        </div>
+        <div id="numbers-holder">
+        </div>
+        <button type="submit" class="btn btn-success" id="submit-button">Calculate GCD</button>
+    </form>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#generate-inputs").on("click", generateInput);
+            $("#submit-button").on("click", submitForm);
+        });
+
+        function submitForm(e) {
+            let blocks = $("#numbers-holder").find(".input-number");
+            if (blocks.length == 0) {
+                setError("Please give at list 2 numbers!");
+                e.preventDefault();
+                return;
+            }
+        } 
+
+        function generateInput() {
+            let number = $("#generated-inputs-count").val();
+            if (!parseInt(number)) {
+                setError("Please give a number.")
+                return;
+            }
+            if (number < 2) {
+                setError("You should choose at list 2 items!");
+                return;
+            }
+            if (number >= 15) {
+                setError("Please set number not greater than 15.");
+                return;
+            }
+            let parent = $("#numbers-holder");
+            parent.empty()
+            for (var i = 0; i < number; i++) {
+                parent.append(getBlockWithNumberInput(i));
+            }
+        };
+
+        function setError(message) {
+            let block = $("#error-message");
+            block.text(message);
+            block.removeClass("hidden");
+        }
+
+        function getBlockWithNumberInput(index) {
+            return "<div class='form-group row input-number'><div class='col-sm-2'>" 
+                + "<input type = 'text' name = 'numbers[" + index + "]' value = '1' class='form-control' /></div></div>";
+        }
+
+    </script>
+}

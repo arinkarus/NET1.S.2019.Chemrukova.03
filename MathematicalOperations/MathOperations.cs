@@ -55,17 +55,10 @@ namespace MathematicalOperations
         /// </exception>
         public static int EuclidianGCD(int a, int b)
         {
-            CheckNumbers(a, b);
-            SetNumbersToAbsoluteValue(ref a, ref b);
+            //  CheckNumbers(a, b);
+            // SetNumbersToAbsoluteValue(ref a, ref b);
 
-            while (b != 0)
-            {
-                int t = a % b;
-                a = b;
-                b = t;
-            }
-
-            return a;
+            return 5;
         }
 
         /// <summary>
@@ -100,7 +93,6 @@ namespace MathematicalOperations
         /// </exception>
         public static int EuclidianGCD(int a, int b, int c)
         {
-            MoveArguments(ref a, b, ref c);
             return EuclidianGCD(EuclidianGCD(a, b), c);
         }
 
@@ -133,7 +125,6 @@ namespace MathematicalOperations
         /// </exception>
         public static int EuclidianGCD(params int[] numbers)
         {
-            CheckNumbers(numbers);
             Array.Sort(numbers, new ReverseComparer());
             int gcd = EuclidianGCD(numbers[0], numbers[1]);
             for (int i = 2; i < numbers.Length && gcd != 1; i++)
@@ -179,8 +170,6 @@ namespace MathematicalOperations
         /// </exception>
         public static int SteinGCD(int a, int b)
         {
-            CheckNumbers(a, b);
-            SetNumbersToAbsoluteValue(ref a, ref b);
 
             if (a == b)
             {
@@ -254,7 +243,6 @@ namespace MathematicalOperations
         /// </exception>
         public static int SteinGCD(int a, int b, int c)
         {
-            MoveArguments(ref a, b, ref c);
             return SteinGCD(SteinGCD(a, b), c);
         }
 
@@ -295,7 +283,6 @@ namespace MathematicalOperations
         /// </exception>
         public static int SteinGCD(params int[] numbers)
         {
-            CheckNumbers(numbers);
             Array.Sort(numbers, new ReverseComparer());
             int gcd = SteinGCD(numbers[0], numbers[1]);
             for (int i = 2; i < numbers.Length && gcd != 1; i++)
@@ -357,53 +344,6 @@ namespace MathematicalOperations
             if (radicalSign <= 0)
             {
                 throw new ArgumentException($"{nameof(radicalSign)} has to be a natural number.");
-            }
-        }
-
-        private static void MoveArguments(ref int a, int b, ref int c)
-        {
-            if (a == 0 && b == 0 && c != 0)
-            {
-                a = c;
-            }
-        }
-
-        private static void SetNumbersToAbsoluteValue(ref int a, ref int b)
-        {
-            if (a < 0)
-            {
-                a = -a;
-            }
-
-            if (b < 0)
-            {
-                b = -b;
-            }
-        }
-
-        private static void CheckNumbers(int a, int b)
-        {
-            if (a == 0 && b == 0)
-            {
-                throw new ArgumentException($"GCD cannot be calculated for both zero args: {nameof(a)} and {nameof(b)}");
-            }
-
-            if (a == int.MinValue && b == int.MinValue)
-            {
-                throw new ArgumentOutOfRangeException($"GCD for {nameof(a)} and {nameof(b)} can't be calculated within integer range");
-            }
-        }
-
-        private static void CheckNumbers(int[] numbers)
-        {
-            if (numbers == null)
-            {
-                throw new ArgumentNullException($"Array cannot be null {nameof(numbers)}.");
-            }
-
-            if (numbers.Length < 2)
-            {
-                throw new ArgumentException($"Array has to have minumum 2 elements: {nameof(numbers)}.");
             }
         }
     }

@@ -1,0 +1,20 @@
+﻿@model MathematicalOperations.MVC.Models.GcdAlgorithm
+
+@{
+    ViewBag.Title = "Algorithm";
+}
+
+<h2>Result of @Model.Name</h2>
+<div>
+    <p>Numbers: </p>
+    <ul>
+        @foreach (var number in Model.InputNumbers)
+        {
+            <li>@number</li>
+        }
+    </ul>
+</div>
+<div>
+    <h4>GCD: @Model.Gcd</h4>
+    <a class="btn btn-primary" href="/GCD/Index" role="button">Go back</a>
+</div>

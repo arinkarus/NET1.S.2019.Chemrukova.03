@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GCDAlgorithm.cs" />
+    <Compile Include="GCDAlgorithms.cs" />
     <Compile Include="MathOperations.cs" />
     <Compile Include="NumberFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

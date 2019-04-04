@@ -54,7 +54,7 @@ namespace MathematicalOperations.Test
         {
             get
             {
-                yield return new TestCaseData(24654, 25473, 954).Returns(3);
+                yield return new TestCaseData(24654, 25473, 954).Returns(21);
                 yield return new TestCaseData(15, 10, 20).Returns(5);
                 yield return new TestCaseData(0, 0, 1).Returns(1);
             }
@@ -94,43 +94,43 @@ namespace MathematicalOperations.Test
         [Test, TestCaseSource(nameof(GCDTwoNumbersCases))]
         public int EuclidianGCD_TwoNumbersPassed_ReturnResult(int a, int b)
         {
-            return MathOperations.EuclidianGCD(out _, a, b);
+            return GCDAlgorithms.GetEuclidieanGcd(a, b);
         }
 
         [Test]
         public void EuclidianGCD_TwoNumbersAreIntMinValue_ThrowArgumentOutOfRangeException() =>
-            Assert.Throws<ArgumentOutOfRangeException>(() => MathOperations.EuclidianGCD(int.MinValue, int.MinValue));
+            Assert.Throws<ArgumentOutOfRangeException>(() => GCDAlgorithms.GetEuclidieanGcd(int.MinValue, int.MinValue));
 
         [Test]
         public void EuclidianGCD_TwoNumbersAreZeros_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.EuclidianGCD(0, 0));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetEuclidieanGcd(0, 0));
 
         [Test, TestCaseSource(nameof(GCDThreeNumbersCases))]
         public int EuclidianGCD_ThreeNumbers_ReturnResult(int a, int b, int c)
         {
-            return MathOperations.EuclidianGCD(out _, a, b, c);
+            return GCDAlgorithms.GetEuclidieanGcd(a, b, c);
         }
 
         [Test]
         public void EuclidianGCD_ThreeNumbersAreZeros_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.EuclidianGCD(0, 0, 0));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetEuclidieanGcd(0, 0, 0));
 
         [Test]
         public void EuclidianGCD_ArrayIsNull_ThrowArgumentNullException() =>
-            Assert.Throws<ArgumentNullException>(() => MathOperations.EuclidianGCD(null));
+            Assert.Throws<ArgumentNullException>(() => GCDAlgorithms.GetEuclidieanGcd(null));
 
         [Test]
         public void EuclidianGCD_ArrayIsEmpty_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.EuclidianGCD(new int[] { }));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetEuclidieanGcd(new int[] { }));
 
         [Test]
         public void EuclidianGCD_ArrayHasOneElement_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.EuclidianGCD(new int[] { 12 }));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetEuclidieanGcd(new int[] { 12 }));
 
         [Test, TestCaseSource(nameof(GCDArrayOfNumbersCases))]
         public int EuclidianGCD_ConreteArrayOfNumbers_ReturnResult(int[] numbers)
         {
-            return MathOperations.EuclidianGCD(out _, numbers);
+            return GCDAlgorithms.GetEuclidieanGcd(numbers);
         }
 
         #endregion
@@ -139,44 +139,44 @@ namespace MathematicalOperations.Test
 
         [Test]
         public void SteinGCD_TwoNumbersAreZeros_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.SteinGCD(0, 0));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetSteinGcd(0, 0));
 
         public void SteinGCD_TwoNumbersAreIntMinValue_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.SteinGCD(int.MinValue, int.MinValue));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetSteinGcd(int.MinValue, int.MinValue));
 
         [Test, TestCaseSource(nameof(GCDTwoNumbersCases))]
         public int SteinGCD_TwoNumbersPassed_ReturnResult(int a, int b)
         {
-            int result = MathOperations.SteinGCD(out _, a, b);
+            int result = GCDAlgorithms.GetSteinGcd(out _, a, b);
             return result;
         }
 
         [Test]
         public void SteinGCD_ThreeNumbersAreZeros_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.SteinGCD(0, 0, 0));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetSteinGcd(0, 0, 0));
 
         [Test, TestCaseSource(nameof(GCDThreeNumbersCases))]
         public int SteinGCD_ThreeNumbers_ReturnResult(int a, int b, int c)
         {
-            return MathOperations.EuclidianGCD(out _, a, b, c);
+            return GCDAlgorithms.GetSteinGcd(out _, a, b, c);
         }
 
         [Test]
         public void SteinGCD_ArrayIsNull_ThrowArgumentNullException() =>
-        Assert.Throws<ArgumentNullException>(() => MathOperations.EuclidianGCD(null));
+        Assert.Throws<ArgumentNullException>(() => GCDAlgorithms.GetSteinGcd(null));
 
         [Test]
         public void SteinGCD_ArrayIsEmpty_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.EuclidianGCD(new int[] { }));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetSteinGcd(new int[] { }));
 
         [Test]
         public void SteinGCD_ArrayHasOneElement_ThrowArgumentException() =>
-            Assert.Throws<ArgumentException>(() => MathOperations.EuclidianGCD(new int[] { 12 }));
+            Assert.Throws<ArgumentException>(() => GCDAlgorithms.GetSteinGcd(new int[] { 12 }));
 
         [Test, TestCaseSource(nameof(GCDArrayOfNumbersCases))]
         public int SteinGCD_ConreteArrayOfNumbers_ReturnResult(int[] numbers)
         {
-            return MathOperations.EuclidianGCD(out _, numbers);
+            return GCDAlgorithms.GetSteinGcd(out _, numbers);
         }
 
         #endregion
