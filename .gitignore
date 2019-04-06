@@ -260,4 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 
-MathematicalOperations.MVC/* linguist-vendored
+/MathematicalOperations.MVC/* linguist-vendored
