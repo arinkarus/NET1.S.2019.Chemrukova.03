@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MathematicalOperations
 {
-
     /// <summary>
     /// Static class that provides methods for calculating greatest common divider.
     /// </summary>
