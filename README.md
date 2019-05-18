@@ -10,3 +10,12 @@
 для расчета НОД двух, трех и т.д. целых чисел (http://en.wikipedia.org/wiki/Binary_GCD_algorithm, https://habrahabr.ru/post/205106/ ),
 а также методы,  предоставляющие дополнительную возможность определения значение времени, необходимое для выполнения расчета.
 Рассмотреть различные возможности реализации методов, возвращающих время вычисления НОД. Разработать модульные тесты.
+
+## Реализация (Done)
+1. - [Решение](https://github.com/arinkarus/NET1.S.2019.Chemrukova.03/blob/master/MathematicalOperations/MathOperations.cs)
+   - [Тесты](https://github.com/arinkarus/NET1.S.2019.Chemrukova.03/blob/master/MathematicalOperations.Test/MathOperationsTests.cs)
+2. - [Решение](https://github.com/arinkarus/NET1.S.2019.Chemrukova.03/blob/master/MathematicalOperations/NumberFinder.cs)
+   - [Тесты](https://github.com/arinkarus/NET1.S.2019.Chemrukova.03/blob/master/MathematicalOperations.Test/NumberFinderTests.cs)
+3. - [GCDAlgorithm](https://github.com/arinkarus/NET1.S.2019.Chemrukova.03/blob/master/MathematicalOperations/GCDAlgorithm.cs)
+   - [GCDAlgorithms](https://github.com/arinkarus/NET1.S.2019.Chemrukova.03/blob/master/MathematicalOperations/GCDAlgorithms.cs)
+   - [Тесты](https://github.com/arinkarus/NET1.S.2019.Chemrukova.03/blob/master/MathematicalOperations.Test/MathOperationsTests.cs)
